@@ -69,4 +69,16 @@ public class Alumno {
     public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
+
+    @Override
+    public String toString() {
+        return "Alumno{" +
+                "nia=" + nia +
+                ", nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", fechaNacimiento='" + fechaNacimiento + '\'' +
+                ", grupo='" + grupo + '\'' +
+                ", telefono=" + telefono +
+                '}';
+    }
 }

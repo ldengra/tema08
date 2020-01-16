@@ -108,6 +108,8 @@ public class Principal {
             alumnos[i] = new Alumno(nia, nombre, apellidos, fechaNacimiento, grupo, telefono);
             //System.out.println(alumnos[i].getNia()+"|"+alumnos[i].getNombre()+"|"+alumnos[i].getApellidos()+"|");
 
+            System.out.println(alumnos[i].toString());
+
             alumnosCreados++;
 
         }
@@ -180,7 +182,7 @@ public class Principal {
                 break;
 
             case 2:
-                edad();
+                //edad();
                 break;
 
             case 3:
@@ -215,7 +217,7 @@ public class Principal {
 
     }
 
-    public static void edad(){
+    /*public static void edad(){
         Scanner input = new Scanner(System.in);
 
         String edadCalculada;
@@ -229,7 +231,7 @@ public class Principal {
             }
         }
 
-    }
+    }*/
 
     public static int obtenerEdad(String fechaNacimiento) {
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/mm/aaaa");
