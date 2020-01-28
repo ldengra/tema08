@@ -4,5 +4,6 @@ public class Clinica {
     private Paciente[] pacientes;
     static Scanner input = new Scanner(System.in);
     private Atencion[] atenciones = new Atencion[500];
+    private int nPacientes = 0;
 }
 

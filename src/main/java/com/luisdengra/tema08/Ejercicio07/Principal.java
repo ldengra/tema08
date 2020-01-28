@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class Principal {
 
 public static Scanner input;
+public static Paciente[] paciente = new Paciente[40];
+public static int contadorPacientes=0;
 
     public static void main(String[] args) {
         input = new Scanner(System.in);
@@ -17,7 +19,7 @@ public static Scanner input;
                     nuevoPaciente();
                     break;
                 case 2:
-                    //atenderPaciente();
+                    atenderPaciente();
                     break;
                 case 3:
                     //Consultas();
@@ -70,6 +72,7 @@ public static Scanner input;
         System.out.println("");
         System.out.println("Introduce el numero SIP: ");
         sip = input.nextInt();
+        input.nextLine();
 
         System.out.println("Nombre: ");
         nombre = input.nextLine();
@@ -79,12 +82,58 @@ public static Scanner input;
 
         System.out.println("Edad: ");
         edad = input.nextInt();
+        input.nextLine();
 
         System.out.println("Sintomatologia: ");
         sintomatologia = input.nextLine();
 
+        paciente[contadorPacientes] = new Paciente(sip, nombre, sexo, edad, sintomatologia);
+        contadorPacientes++;
+    }
+
+    public static void atenderPaciente(){
+        Atencion[] atendido = new Atencion[500];
+        int sipPaciente;
+        int pos=0;
+        double temperatura;
+        int ppm;
+        int tenSis;
+        int tenDias;
+
+        System.out.println("Inserta el SIP del paciente");
+        sipPaciente = input.nextInt();
+        input.nextLine();
+
+        pos = buscarPacientePorSIP(sipPaciente);
+
+        System.out.println(paciente[pos].toString());
+
+        System.out.println("Temperatura: ");
+        temperatura = input.nextInt();
+        input.nextLine();
+
+        System.out.println("Pulsaciones por minuto: ");
+        ppm = input.nextInt();
+        input.nextLine();
+
+        System.out.println("Tension sistolica:");
+        tenSis = input.nextInt();
+        input.nextLine();
+
+        System.out.println("Tension diastolica: ");
+        tenDias = input.nextInt();
+        input.nextLine();
 
 
 
+    }
+
+    static int buscarPacientePorSIP(int referencia) {
+        for(int i = 0; i < contadorPacientes; i++) {
+            if (paciente[i].getSip() == referencia) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
