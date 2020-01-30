@@ -6,7 +6,7 @@ public class Pila {
 
     //atributos "crear array" como añadir y eliminar elementos dentro del array
     private static final int INITIAL_SIZE = 10;
-    private int[] datos;
+    private double[] datos;
     private int contador; //numero elementos
 
     //constructor
@@ -25,7 +25,7 @@ public class Pila {
      *             parametro el size
      */
     public Pila(int size) {
-        datos = new int[size];
+        datos = new double[size];
         contador = 0;
     }
 
@@ -37,7 +37,7 @@ public class Pila {
      * Con contador++ controlamos la posicion del array para no machacar informacion
      * @param n es le dato que le pasamos desde el main que queremos añadir a la pila
      */
-    public void push (int n){
+    public void push (double n){
         if(contador == datos.length){
             datos = duplicarArray(datos);
         }
@@ -50,8 +50,8 @@ public class Pila {
      * @param datos le pasamos el array actual para saber su longitud y saber cuanta longitud de mas tenemos que añadir
      * @return devolvemos el aux que es el array ya copiado y multiplicado
      */
-    private int[] duplicarArray(int[] datos){
-        int[] aux = new int[datos.length * 2];
+    private double[] duplicarArray(double[] datos){
+        double[] aux = new double[datos.length * 2];
 
         for (int i = 0; i < datos.length; i++){
             aux[i] = datos[i];
@@ -61,11 +61,14 @@ public class Pila {
     }
 
     /**
-     *
-     * @return
+     *Este metodo es para quitar el ultimo elemento de la pila. Damos valor a la variable de resultado como MIN.VALUE
+     * para poder diferenciar las posiciones que no han sido asignadas. si la posicion del array es diferente
+     * a vacia.(Para ello usamo el metodo creado de empty), restamos 1 al contador de posiciones, asi que cuando
+     * hagamos un push, machaque el dato anterior.
+     * @return devuelve la pila con la posicion -1
      */
-    public int pop(){
-        int resultado = Integer.MIN_VALUE;
+    public double pop(){
+        double resultado = Integer.MIN_VALUE;
         if(!empty()){
             resultado = datos[contador -1];
             contador--;
@@ -73,16 +76,30 @@ public class Pila {
         return resultado;
     }
 
+    /**
+     * Este metodo sirve para ver la longitud usada de la pila
+     * @return devuelve un int con el numero de posiciones utilizadas.
+     */
     public int size(){
         return contador;
     }
 
+    /**
+     * Con este metodo podemos ver si la pila esta vacia, si el contador es igual a 0 devolvera true, si tiene algo
+     * devolvera false
+     * @return devuelve un booleano
+     */
     public boolean empty() {
         return contador == 0;
     }
 
-    public int top(){
-        int resultado = Integer.MIN_VALUE;
+    /**
+     * Este metodo sirve para leer la ultima posicion de la pila, pero sin borrarla, para ello hacemos lo mismo que
+     * en el pop, si la pila no esta vacia, asignamos a resultado el valor de la ultima posicion de la pila
+     * @return nos devuelve el valor de la ultima posicion de la pila
+     */
+    public double top(){
+        double resultado = Integer.MIN_VALUE;
         if(!empty()){
             resultado = datos[contador -1];
         }
