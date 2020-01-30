@@ -22,7 +22,7 @@ public class Cola {
     //metodos
 
 
-    public void push (double n){
+    public void add (double n){
         if(contador == cola.length){
             cola = duplicarArray(cola);
         }
@@ -40,7 +40,7 @@ public class Cola {
 
     }
 
-    public double pop(){
+    public double remove(){
         double aux = Integer.MIN_VALUE;
         if(!empty()){
             aux = cola[0];
@@ -62,6 +62,12 @@ public class Cola {
         for (int i = 0; i < contador; i++){
             cola[i] = cola[i+1];
         }
+    }
+
+    public double peek(){
+        if(!empty())
+            return cola[0];
+            return Integer.MIN_VALUE;
     }
 
     public String toString() {
